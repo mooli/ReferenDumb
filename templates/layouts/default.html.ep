@@ -1,5 +1,8 @@
-<!DOCTYPE html>
-<html>
-  <head><title><%= title %></title></head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title><%= title %></title>
+    <meta charset="utf-8" />
+  </head>
   <body><%= content %></body>
 </html>
