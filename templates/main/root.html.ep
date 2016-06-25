@@ -2,7 +2,7 @@
 % title 'ReferenDumb';
 
 <style>
-  .data-right td { text-align: right };
+  .number td { text-align: right; padding-left: 1em; padding-right: 1em; };
 </style>
 
 <h1>ReferenDumb</h1>
@@ -11,7 +11,7 @@
 <p>There were <b><%= $commify->($count) %></b> signatories to
 the <a href="https://petition.parliament.uk/petitions/131215">"EU Referendum
 Rules triggering a 2nd EU Referendum" petition</a> as of <%= scalar gmtime
-$mtime %> UTC.
+$mtime %> UTC.</p>
 
 <table>
   <thead><tr>
@@ -24,7 +24,7 @@ $mtime %> UTC.
     </tr><tbody>
       % for my $kind (@$order) {
       % my($votes, $fraction, $signatures, $change, $adjusted) = @{ $table->{$kind} };
-      <tr class="data-right">
+      <tr class="number">
         <th><%= ucfirst $kind %></th>
         <td><%= $commify->($votes) %>
         <td><%= sprintf "%.2f%%", $fraction * 100 %>
@@ -34,6 +34,8 @@ $mtime %> UTC.
         </tr>
       % }
 </table>
+
+<p>Note: numbers may not add up exactly due to rounding.</p>
 
 <dl>
   <dh>Referendum votes</dh>
@@ -49,6 +51,8 @@ $mtime %> UTC.
   <dd>The change in the number of votes for this outcome if the signatories
     had voted Remain instead.</dd>
   <dh>Adjusted votes</dh>
-  <dd>The total number of votes if the signaturies all voted for Remain.
+  <dd>The total number of votes if the signatories all voted for Remain.
 </dl>
 
+<p>Download the source code for this site
+from <a href="https://github.com/mooli/ReferenDumb">https://github.com/mooli/ReferenDumb</a>.

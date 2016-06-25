@@ -3,7 +3,7 @@ use Mojo::Base 'Mojolicious::Controller';
 
 use Mojo::JSON qw( decode_json );
 
-my $CACHE_TIME = 1;
+my $CACHE_TIME = 5;
 
 # helper function which returns (count, last_updated).
 sub get_count {
@@ -43,7 +43,7 @@ sub get_count {
 
 sub commify($) {
     my($number) = @_;
-    $number = int($number);
+    $number = int($number + 0.5);
     1 while $number =~ s/(\d+)(\d{3})/$1,$2/;
     return $number;
 }
